@@ -1,28 +1,28 @@
+import os
+import io
+
+from flask import Flask, render_template, request, redirect, session, url_for, send_file
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
+
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
-from flask import send_file
-import io
-from flask import Flask, render_template, request, redirect, session
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, render_template
-from flask import request   # make sure this import exists
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 
-
-print(">>> THIS IS MY SWEETBITE APP <<<")
-
+# Create Flask app ONCE
 app = Flask(__name__)
 app.secret_key = "sweetbite_secret_key"
+
+# Database config (Render uses DATABASE_URL)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
+
 ADMIN_EMAIL = "admin@sweetbite.com"
 ADMIN_PASSWORD = "Virat@213111"
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Virat%40213111@localhost:5432/sweetbite1_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
