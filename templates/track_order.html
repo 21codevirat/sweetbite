@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>📦 Order Tracking</h2>
+
+<div class="tracking-box">
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+
+    <div class="status-bar">
+        <div class="step {% if order.status in ['Placed','Packed','Shipped','Out for Delivery','Delivered'] %}active{% endif %}">Placed</div>
+        <div class="step {% if order.status in ['Packed','Shipped','Out for Delivery','Delivered'] %}active{% endif %}">Packed</div>
+        <div class="step {% if order.status in ['Shipped','Out for Delivery','Delivered'] %}active{% endif %}">Shipped</div>
+        <div class="step {% if order.status in ['Out for Delivery','Delivered'] %}active{% endif %}">Out for Delivery</div>
+        <div class="step {% if order.status == 'Delivered' %}active{% endif %}">Delivered</div>
+    </div>
+
+</div>
+
+{% endblock %}

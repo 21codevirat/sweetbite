@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Our Fresh Bakery Items</h2>
+
+<div class="products-grid">
+    {% for product in products %}
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+
+            <h3>{{ product.name }}</h3>
+            <p>₹ {{ product.price }}</p>
+
+            <button>Add to Cart</button>
+
+            <a href="/admin/edit-product/{{ product.id }}">Edit</a>
+
+            <form action="/admin/delete-product/{{ product.id }}" method="post">
+                <button style="background:#b71c1c;color:white;">Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

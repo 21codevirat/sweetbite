@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<ul>
+
+<hr>
+
+<h3>📦 Orders</h3>
+
+{% if orders %}
+    {% for order in orders %}
+        <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc;">
+            <p>
+                <strong>Order #{{ order.id }}</strong><br>
+                Amount: ₹{{ order.total_price }}<br>
+                Status: <b>{{ order.status }}</b>
+            </p>
+
+        <div class="order-status">
+    <a href="/admin/update-order/{{ order.id }}/Packed"
+       class="{% if order.status == 'Packed' %}active{% endif %}">
+       📦 Packed
+    </a>
+
+    <a href="/admin/update-order/{{ order.id }}/Shipped"
+       class="{% if order.status == 'Shipped' %}active{% endif %}">
+       🚚 Shipped
+    </a>
+
+    <a href="/admin/update-order/{{ order.id }}/Out for Delivery"
+       class="{% if order.status == 'Out for Delivery' %}active{% endif %}">
+       📍 Out
+    </a>
+
+    <a href="/admin/update-order/{{ order.id }}/Delivered"
+       class="{% if order.status == 'Delivered' %}active{% endif %}">
+       ✅ Delivered
+    </a>
+</div>
+
+    {% endfor %}
+{% else %}
+    <p>No orders yet.</p>
+{% endif %}
+
+    <li><a href="/admin/add-product">Add New Product</a></li>
+    <li><a href="/products">View Products</a></li>
+    <li><a href="/">Back to Home</a></li>
+    <li><a href="/admin/analytics">View Sales Analytics</a></li>
+
+
+
+</ul>
+{% endblock %}

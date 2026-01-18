@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>SWEETBITE 🍰</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+<div style="display:flex; align-items:center;">
+    <img src="{{ url_for('static', filename='images/logo.png') }}"
+         alt="SweetBite Logo"
+         style="height:50px; margin-right:15px;">
+    <h1>SWEETBITE</h1>
+</div>
+
+   <nav>
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/cart">Cart</a>
+
+
+    {% if session.get("user_logged_in") %}
+    <span>Welcome, {{ session.get("user_name") }}</span>
+    <a href="/user-logout">Logout</a>
+{% else %}
+    <a href="/signup">Signup</a>
+    <a href="/user-login">Login</a>
+{% endif %}
+
+</nav>
+
+</header>
+
+<main class="container">
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 SWEETBITE Bakery</p>
+</footer>
+
+</body>
+</html>

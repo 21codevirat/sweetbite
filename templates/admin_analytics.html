@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Sales Analytics Dashboard</h2>
+
+<div style="display:flex; gap:20px; margin-top:20px;">
+
+    <div style="padding:20px; border:1px solid #ccc; width:200px;">
+        <h3>Total Orders</h3>
+        <p>{{ total_orders }}</p>
+    </div>
+
+    <div style="padding:20px; border:1px solid #ccc; width:200px;">
+        <h3>Total Revenue</h3>
+        <p>₹ {{ total_revenue }}</p>
+    </div>
+
+    <div style="padding:20px; border:1px solid #ccc; width:200px;">
+        <h3>Products Sold</h3>
+        <p>{{ total_items }}</p>
+    </div>
+
+</div>
+
+<a href="/admin">← Back to Admin Dashboard</a>
+{% endblock %}
