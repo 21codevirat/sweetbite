@@ -377,5 +377,5 @@ with app.app_context():
 
 # 🚨 DO NOT WRITE ANY CODE BELOW THIS 🚨
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
     
