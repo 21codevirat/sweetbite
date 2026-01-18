@@ -8,6 +8,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 from flask import request   # make sure this import exists
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+
 
 print(">>> THIS IS MY SWEETBITE APP <<<")
 
